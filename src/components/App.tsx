@@ -1,13 +1,5 @@
 import React, { useState } from 'react'
-import ToDoList from './components/ToDoList'
-
-type toDoItem = {
-  id: number
-  label: string
-  isDone: boolean
-}
-
-type toDoList = Array<toDoItem>
+import ToDoList from './ToDoList'
 
 const App: React.FC = () => {
   const defaultList: toDoList = [
