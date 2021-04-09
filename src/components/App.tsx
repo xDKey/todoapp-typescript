@@ -20,14 +20,13 @@ const App: React.FC = () => {
 
   const addNewItem = (label: string): void => {
     const newItem: toDoItem = {
-      id: toDoListState.length + 1,
+      id: Date.now(),
       label,
       isDone: false,
     }
 
     setToDoListState([...toDoListState, newItem])
   }
-
   return (
     <>
       <ToDoList toDoList={toDoListState} setToDoList={setToDoListState} />
