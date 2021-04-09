@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { toDoItem, toDoList } from 'type'
 import ToDoList from './ToDoList'
 
 const App: React.FC = () => {

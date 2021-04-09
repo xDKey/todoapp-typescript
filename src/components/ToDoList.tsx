@@ -1,20 +1,15 @@
 import React from 'react'
+import { toDoList } from 'type'
 import ToDoItem from './ToDoItem'
 
-type toDoItem = {
-  id: number
-  label: string
-  isDone: boolean
-}
-
 type toDoListProps = {
-  toDoList: Array<toDoItem>
-  setToDoList: (newList: Array<toDoItem>) => void
+  toDoList: toDoList
+  setToDoList: (newList: toDoList) => void
 }
 
 const ToDoList = ({ toDoList, setToDoList }: toDoListProps) => {
   const setToDoDone = (id: number): void => {
-    const newtoDoList: Array<toDoItem> = toDoList.map((item) => {
+    const newtoDoList: toDoList = toDoList.map((item) => {
       if (item.id === id) return { id, label: item.label, isDone: !item.isDone }
       return item
     })
