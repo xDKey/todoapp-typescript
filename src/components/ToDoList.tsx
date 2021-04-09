@@ -16,10 +16,15 @@ const ToDoList = ({ toDoList, setToDoList }: toDoListProps) => {
     setToDoList(newtoDoList)
   }
 
+  const removeItem = (id: number): void => {
+    const newtoDoList: toDoList = toDoList.filter(item => item.id !== id)
+    setToDoList(newtoDoList)
+  }
+
   return (
     <>
       {toDoList.map((item) => (
-        <ToDoItem {...item} setToDoDone={setToDoDone} />
+        <ToDoItem {...item} setToDoDone={setToDoDone} removeItem={removeItem}/>
       ))}
     </>
   )
