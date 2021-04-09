@@ -3,16 +3,18 @@ import React, { useState } from 'react'
 const InputNewToDo = ({
   addNewItem,
 }: {
-  addNewItem: (label: string) => void
+  addNewItem: (label: string, category: string) => void
 }) => {
   const [inputValue, setInputValue] = useState('')
+  const [categoryValue, setCategoryValue] = useState('')
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault()
-    if (inputValue === '') return
+    if (inputValue === '' || categoryValue === '') return
 
-    addNewItem(inputValue)
+    addNewItem(inputValue, categoryValue)
     setInputValue('')
+    setCategoryValue('')
   }
 
   return (
@@ -22,6 +24,15 @@ const InputNewToDo = ({
         value={inputValue}
         onChange={({ target }) => setInputValue(target.value)}
       />
+      <select
+        value={categoryValue}
+        onChange={({ target }) => setCategoryValue(target.value)}
+      >
+        <option value=''>Choose Category</option>
+        <option value='work'>Work</option>
+        <option value='family'>Family</option>
+        <option value='supplies'>Supplies</option>
+      </select>
       <button type='submit'>Add</button>
     </form>
   )

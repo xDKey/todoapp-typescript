@@ -9,19 +9,16 @@ const App: React.FC = () => {
       id: 1,
       label: 'Drink tea',
       isDone: false,
-    },
-    {
-      id: 2,
-      label: 'Walk',
-      isDone: true,
+      category: 'work'
     },
   ]
   const [toDoListState, setToDoListState] = useState(defaultList)
 
-  const addNewItem = (label: string): void => {
+  const addNewItem = (label: string, category: string): void => {
     const newItem: toDoItem = {
       id: Date.now(),
       label,
+      category,
       isDone: false,
     }
 
