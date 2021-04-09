@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { toDoItem, toDoList } from 'type'
 import ToDoList from './ToDoList'
+import InputNewToDo from './InputNewToDo'
 
 const App: React.FC = () => {
   const defaultList: toDoList = [
@@ -17,9 +18,20 @@ const App: React.FC = () => {
   ]
   const [toDoListState, setToDoListState] = useState(defaultList)
 
+  const addNewItem = (label: string): void => {
+    const newItem: toDoItem = {
+      id: toDoListState.length + 1,
+      label,
+      isDone: false,
+    }
+
+    setToDoListState([...toDoListState, newItem])
+  }
+
   return (
     <>
       <ToDoList toDoList={toDoListState} setToDoList={setToDoListState} />
+      <InputNewToDo addNewItem={addNewItem} />
     </>
   )
 }
