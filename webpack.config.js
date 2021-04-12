@@ -6,7 +6,7 @@ const config = {
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
+        test: /\.(js|ts)x?$/,
         use: 'ts-loader',
         exclude: /node_modules/,
       },
