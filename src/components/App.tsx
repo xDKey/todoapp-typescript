@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { toDoItem, toDoList } from 'type'
 import ToDoList from './ToDoList'
@@ -8,12 +8,18 @@ const App: React.FC = () => {
   const defaultList: toDoList = [
     {
       id: 1,
-      label: 'Drink tea',
+      label: 'Write first task',
       isDone: false,
       category: 'work',
     },
   ]
-  const [toDoListState, setToDoListState] = useState(defaultList)
+  const localToDoList = JSON.parse(localStorage.getItem('localToDoList'))
+
+  const [toDoListState, setToDoListState] = useState(localToDoList || defaultList)
+
+  useEffect(() => {
+    localStorage.setItem('localToDoList', JSON.stringify(toDoListState))
+  }, [toDoListState])
 
   const addNewItem = (label: string, category: string): void => {
     const newItem: toDoItem = {
