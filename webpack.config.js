@@ -1,7 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-module.exports = {
+const config = {
   entry: './src/index.tsx',
   module: {
     rules: [
@@ -22,7 +22,16 @@ module.exports = {
   ],
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, 'build'),
-    publicPath: '/todoapp-typescript/',
+    // path: path.resolve(__dirname, 'build'),
+    // publicPath: '/todoapp-typescript/',
   },
+}
+
+module.exports = (env, argv) => {
+  if (argv.mode === 'production')
+    config.output.publicPath = '/todoapp-typescript/'
+
+  if (argv.mode === 'development')
+    config.output.path = path.resolve(__dirname, 'build')
+  return config
 }
