@@ -13,7 +13,7 @@ const App: React.FC = () => {
       category: 'work',
     },
   ]
-  const localToDoList = JSON.parse(localStorage.getItem('localToDoList'))
+  const localToDoList: toDoList = JSON.parse(localStorage.getItem('localToDoList'))
 
   const [toDoListState, setToDoListState] = useState(localToDoList || defaultList)
 
