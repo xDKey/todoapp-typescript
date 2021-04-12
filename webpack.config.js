@@ -13,7 +13,7 @@ const config = {
     ],
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
+    extensions: ['.tsx', '.ts', '.jsx', '.js'],
   },
   plugins: [
     new HtmlWebpackPlugin({
