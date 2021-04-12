@@ -46,6 +46,11 @@ const StyledForm = styled.form`
   display: flex;
   width: 40%;
   box-shadow: -2px -2px 10px black;
+
+  @media (max-width: 768px) {
+    width: 100%;
+    flex-direction: column;
+  }
 `
 
 const Wrapper = styled.section`
@@ -66,6 +71,9 @@ const StyledSelect = styled.select`
 
 const StyledButton = styled.button`
   border: none;
+  @media (max-width: 768px) {
+    height: 40px;
+  }
 `
 
 export default InputNewToDo

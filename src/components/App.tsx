@@ -33,6 +33,7 @@ const App: React.FC = () => {
   }
   return (
     <StyledMain>
+      <h1>ToDo List</h1>
       <InputNewToDo addNewItem={addNewItem} />
       <ToDoList toDoList={toDoListState} setToDoList={setToDoListState} />
     </StyledMain>

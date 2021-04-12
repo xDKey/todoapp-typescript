@@ -45,6 +45,10 @@ const StyledToDoItem = styled.div`
   width: 40%;
 
   box-shadow: -2px -2px 10px black;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `
 
 export default ToDoItem
