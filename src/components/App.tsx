@@ -10,12 +10,13 @@ const App: React.FC = () => {
       id: 1,
       label: 'Write first task',
       isDone: false,
-      category: 'work',
+      category: 'Work',
     },
   ]
   const localToDoList: toDoList = JSON.parse(localStorage.getItem('localToDoList'))
 
   const [toDoListState, setToDoListState] = useState(localToDoList || defaultList)
+  const categories = ['Work', 'Family', 'Supplies']
 
   useEffect(() => {
     localStorage.setItem('localToDoList', JSON.stringify(toDoListState))
@@ -31,11 +32,12 @@ const App: React.FC = () => {
 
     setToDoListState([...toDoListState, newItem])
   }
+
   return (
     <StyledMain>
       <h1>ToDo List</h1>
-      <InputNewToDo addNewItem={addNewItem} />
-      <ToDoList toDoList={toDoListState} setToDoList={setToDoListState} />
+      <InputNewToDo addNewItem={addNewItem} categories={categories}/>
+      <ToDoList toDoList={toDoListState} setToDoList={setToDoListState} categories={categories}/>
     </StyledMain>
   )
 }

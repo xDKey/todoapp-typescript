@@ -5,10 +5,11 @@ import ToDoItem from './ToDoItem'
 
 type toDoListProps = {
   toDoList: toDoList
+  categories: Array<string>
   setToDoList: (newList: toDoList) => void
 }
 
-const ToDoList = ({ toDoList, setToDoList }: toDoListProps) => {
+const ToDoList = ({ toDoList, categories, setToDoList }: toDoListProps) => {
   const setToDoDone = (id: number): void => {
     const newtoDoList: toDoList = toDoList.map((item) => {
       if (item.id === id)
@@ -43,24 +44,16 @@ const ToDoList = ({ toDoList, setToDoList }: toDoListProps) => {
 
   return (
     <>
-      {sortedByCategory('work').length !== 0 && (
-        <StyledCategory>
-          <h1>Work</h1>
-          {sortedByCategory('work')}
-        </StyledCategory>
-      )}
-      {sortedByCategory('family').length !== 0 && (
-        <StyledCategory>
-          <h1>Family</h1>
-          {sortedByCategory('family')}
-        </StyledCategory>
-      )}
-      {sortedByCategory('supplies').length !== 0 && (
-        <StyledCategory>
-          <h1>Supplies</h1>
-          {sortedByCategory('supplies')}
-        </StyledCategory>
-      )}
+      {categories.map((item) => {
+        if (sortedByCategory(item).length !== 0) {
+          return (
+            <StyledCategory key={item}>
+              <h1>{item}</h1>
+              {sortedByCategory(item)}
+            </StyledCategory>
+          )
+        }
+      })}
     </>
   )
 }

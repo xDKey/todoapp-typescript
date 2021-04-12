@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 
-const InputNewToDo = ({
-  addNewItem,
-}: {
+type InputNewToDoTypes = {
   addNewItem: (label: string, category: string) => void
-}) => {
+  categories: Array<string>
+}
+
+const InputNewToDo = ({ addNewItem, categories }: InputNewToDoTypes) => {
   const [inputValue, setInputValue] = useState('')
   const [categoryValue, setCategoryValue] = useState('')
 
@@ -17,6 +18,10 @@ const InputNewToDo = ({
     setInputValue('')
     setCategoryValue('')
   }
+
+  const renderOptions = categories.map((item) => (
+    <option value={item} key={item}>{item}</option>
+  ))
 
   return (
     <StyledForm onSubmit={handleSubmit}>
@@ -32,9 +37,7 @@ const InputNewToDo = ({
           onChange={({ target }) => setCategoryValue(target.value)}
         >
           <option value=''>Choose Category</option>
-          <option value='work'>Work</option>
-          <option value='family'>Family</option>
-          <option value='supplies'>Supplies</option>
+          {renderOptions}
         </StyledSelect>
       </Wrapper>
       <StyledButton type='submit'>ADD</StyledButton>
