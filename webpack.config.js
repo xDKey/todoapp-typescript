@@ -22,8 +22,7 @@ const config = {
   ],
   output: {
     filename: '[name].js',
-    // path: path.resolve(__dirname, 'build'),
-    // publicPath: '/todoapp-typescript/',
+    path: path.resolve(__dirname, 'build'),
   },
 }
 
@@ -31,7 +30,5 @@ module.exports = (env, argv) => {
   if (argv.mode === 'production')
     config.output.publicPath = '/todoapp-typescript/'
 
-  if (argv.mode === 'development')
-    config.output.path = path.resolve(__dirname, 'build')
   return config
 }
