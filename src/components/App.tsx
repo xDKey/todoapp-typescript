@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import styled from 'styled-components'
 import { toDoItem, toDoList } from 'type'
 import ToDoList from './ToDoList'
 import InputNewToDo from './InputNewToDo'
@@ -9,7 +10,7 @@ const App: React.FC = () => {
       id: 1,
       label: 'Drink tea',
       isDone: false,
-      category: 'work'
+      category: 'work',
     },
   ]
   const [toDoListState, setToDoListState] = useState(defaultList)
@@ -25,11 +26,19 @@ const App: React.FC = () => {
     setToDoListState([...toDoListState, newItem])
   }
   return (
-    <>
-      <ToDoList toDoList={toDoListState} setToDoList={setToDoListState} />
+    <StyledMain>
       <InputNewToDo addNewItem={addNewItem} />
-    </>
+      <ToDoList toDoList={toDoListState} setToDoList={setToDoListState} />
+    </StyledMain>
   )
 }
+
+const StyledMain = styled.main`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  margin: auto;
+`
 
 export default App

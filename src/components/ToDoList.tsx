@@ -1,4 +1,5 @@
 import React from 'react'
+import styled from 'styled-components'
 import { toDoList } from 'type'
 import ToDoItem from './ToDoItem'
 
@@ -39,30 +40,37 @@ const ToDoList = ({ toDoList, setToDoList }: toDoListProps) => {
         />
       ))
   }
-  console.log(sortedByCategory('family'))
 
   return (
     <>
       {sortedByCategory('work').length !== 0 && (
-        <section>
-          <h4>Work</h4>
+        <StyledCategory>
+          <h1>Work</h1>
           {sortedByCategory('work')}
-        </section>
+        </StyledCategory>
       )}
       {sortedByCategory('family').length !== 0 && (
-        <section>
-          <h4>Family</h4>
+        <StyledCategory>
+          <h1>Family</h1>
           {sortedByCategory('family')}
-        </section>
+        </StyledCategory>
       )}
       {sortedByCategory('supplies').length !== 0 && (
-        <section>
-          <h4>Supplies</h4>
+        <StyledCategory>
+          <h1>Supplies</h1>
           {sortedByCategory('supplies')}
-        </section>
+        </StyledCategory>
       )}
     </>
   )
 }
 
+const StyledCategory = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+  border-bottom: 2px solid gray;
+`
 export default ToDoList
