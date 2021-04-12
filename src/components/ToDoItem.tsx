@@ -26,9 +26,10 @@ const ToDoItem = ({
   )
 }
 
-const StyledToDoLabel = styled.p<{ isDone: boolean }>`
+const StyledToDoLabel = styled.div<{ isDone: boolean }>`
   cursor: pointer;
-  padding: 5px;
+  width: 100%;
+  padding: 15px;
   text-decoration: ${({ isDone }) => (isDone ? 'line-through' : '')};
 `
 const StyledButton = styled.button`
