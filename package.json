@@ -7,7 +7,8 @@
     "start": "webpack serve --mode development --progress --open",
     "build": "webpack --mode production",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "test": "cypress open"
   },
   "dependencies": {
     "react": "^17.0.2",
@@ -15,9 +16,12 @@
     "styled-components": "^5.2.3"
   },
   "devDependencies": {
+    "@cypress/react": "^5.3.2",
+    "@cypress/webpack-dev-server": "^1.1.2",
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.3",
     "@types/styled-components": "^5.1.9",
+    "cypress": "^7.0.1",
     "gh-pages": "^3.1.0",
     "html-webpack-plugin": "^5.3.1",
     "ts-loader": "^8.1.0",
