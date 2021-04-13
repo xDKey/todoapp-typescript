@@ -27,7 +27,7 @@ const config = {
 }
 
 module.exports = (env, argv) => {
-  if (argv.mode === 'production')
+  if (argv && argv.mode === 'production')
     config.output.publicPath = '/todoapp-typescript/'
 
   return config

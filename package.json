@@ -8,7 +8,8 @@
     "build": "webpack --mode production",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
-    "test": "cypress open"
+    "test": "cypress open",
+    "unit-tests": "cypress open-ct"
   },
   "dependencies": {
     "react": "^17.0.2",
