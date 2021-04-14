@@ -1,4 +1,9 @@
 {
   "componentFolder": "src/tests",
-  "testFiles": "**/*.spec.{js,ts,jsx,tsx}"
+  "testFiles": "**/*.spec.{js,ts,jsx,tsx}",
+  "env": {
+    "cypress-react-selector": {
+      "root": "#__cy_root"
+    }
+  }
 }
