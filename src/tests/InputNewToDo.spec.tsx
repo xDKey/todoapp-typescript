@@ -1,4 +1,4 @@
-import { mount, unmount } from '@cypress/react'
+import { mount } from '@cypress/react'
 import React from 'react'
 import InputNewToDo from '../components/InputNewToDo'
 
@@ -14,7 +14,6 @@ describe('<InoutNewToDo />', () => {
     mount(<App />)
     cy.waitForReact()
   })
-  after(() => unmount())
 
   it('Render correctly', () => {
     cy.react('InputNewToDo').contains('Choose Category')

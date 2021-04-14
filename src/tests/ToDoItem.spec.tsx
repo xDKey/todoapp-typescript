@@ -1,5 +1,5 @@
 import React from 'react'
-import { mount, unmount } from '@cypress/react'
+import { mount } from '@cypress/react'
 import ToDoItem from '../components/ToDoItem'
 
 describe('<ToDoItem />', () => {
@@ -15,7 +15,6 @@ describe('<ToDoItem />', () => {
     )
     cy.waitForReact()
   })
-  after(() => unmount())
 
   it('Render correctly', () => {
     cy.react('ToDoItem').contains('Test')
