@@ -1,6 +1,6 @@
 import { Action, toDoItem, toDoList } from '../type'
 
-export const addItem = (payload: toDoItem) => ({
+export const addItem = (payload: toDoItem): Action => ({
   type: 'ADD_ITEM',
   payload,
 })
@@ -15,7 +15,7 @@ export const doneItem = (id: number): Action => ({
   payload: { id },
 })
 
-export const setLocalToDoList = (payload: toDoList) => ({
+export const setLocalToDoList = (payload: toDoList): Action => ({
   type: 'SET_LOCAL_TODOLIST',
   payload,
 })
