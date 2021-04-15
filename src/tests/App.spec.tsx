@@ -1,9 +1,15 @@
 import { mount } from '@cypress/react'
 import React from 'react'
 import App from '../components/App'
+import { Provider } from 'react-redux'
+import store from '../store/store'
 
 it('<App />', () => {
-  mount(<App />)
+  mount(
+    <Provider store={store}>
+      <App />
+    </Provider>
+  )
   cy.waitForReact()
 
   cy.react('App')
