@@ -1,33 +1,11 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import styled from 'styled-components'
-import { toDoList } from 'type'
+import { State } from 'type'
 import ToDoItem from './ToDoItem'
 
-type toDoListProps = {
-  toDoList: toDoList
-  categories: Array<string>
-  setToDoList: (newList: toDoList) => void
-}
-
-const ToDoList = ({ toDoList, categories, setToDoList }: toDoListProps) => {
-  const setToDoDone = (id: number): void => {
-    const newtoDoList: toDoList = toDoList.map((item) => {
-      if (item.id === id)
-        return {
-          id,
-          label: item.label,
-          category: item.category,
-          isDone: !item.isDone,
-        }
-      return item
-    })
-    setToDoList(newtoDoList)
-  }
-
-  const removeItem = (id: number): void => {
-    const newtoDoList: toDoList = toDoList.filter((item) => item.id !== id)
-    setToDoList(newtoDoList)
-  }
+const ToDoList = () => {
+  const { categories, toDoList } = useSelector((state: State) => state)
 
   const sortedByCategory = (category: string) => {
     return toDoList
@@ -36,8 +14,6 @@ const ToDoList = ({ toDoList, categories, setToDoList }: toDoListProps) => {
         <ToDoItem
           key={item.id}
           {...item}
-          setToDoDone={setToDoDone}
-          removeItem={removeItem}
         />
       ))
   }

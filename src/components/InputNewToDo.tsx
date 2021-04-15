@@ -1,26 +1,37 @@
 import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
+import { State, toDoItem } from '../type'
+import {addItem} from '../store/actions'
 
-type InputNewToDoTypes = {
-  addNewItem: (label: string, category: string) => void
-  categories: Array<string>
-}
-
-const InputNewToDo = ({ addNewItem, categories }: InputNewToDoTypes) => {
+const InputNewToDo = () => {
   const [inputValue, setInputValue] = useState('')
   const [categoryValue, setCategoryValue] = useState('')
+
+  const categories = useSelector((state: State) => state.categories)
+  const dispatch = useDispatch()
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault()
     if (inputValue === '' || categoryValue === '') return
 
-    addNewItem(inputValue, categoryValue)
+    const newItem: toDoItem = {
+      id: Date.now(),
+      label: inputValue,
+      isDone: false,
+      category: categoryValue
+    }
+
+    dispatch(addItem(newItem))
+    
     setInputValue('')
     setCategoryValue('')
   }
 
   const renderOptions = categories.map((item) => (
-    <option value={item} key={item}>{item}</option>
+    <option value={item} key={item}>
+      {item}
+    </option>
   ))
 
   return (

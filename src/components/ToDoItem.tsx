@@ -1,27 +1,27 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
+import { doneItem, removeItem } from '../store/actions'
 
 type ToDoItemProps = {
   id: number
   label: string
   isDone: boolean
-  setToDoDone: (id: number) => void
-  removeItem: (id: number) => void
 }
 
 const ToDoItem = ({
   id,
   label,
   isDone,
-  setToDoDone,
-  removeItem,
 }: ToDoItemProps) => {
+  const dispatch = useDispatch()
+
   return (
     <StyledToDoItem>
-      <StyledToDoLabel isDone={isDone} onClick={() => setToDoDone(id)}>
+      <StyledToDoLabel isDone={isDone} onClick={() => dispatch(doneItem(id))}>
         {label}
       </StyledToDoLabel>
-      <StyledButton onClick={() => removeItem(id)}>X</StyledButton>
+      <StyledButton onClick={() => dispatch(removeItem(id))}>X</StyledButton>
     </StyledToDoItem>
   )
 }
