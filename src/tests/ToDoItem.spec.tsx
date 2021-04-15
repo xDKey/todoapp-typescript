@@ -1,32 +1,31 @@
 import React from 'react'
 import { mount } from '@cypress/react'
 import ToDoItem from '../components/ToDoItem'
+import { Provider } from 'react-redux'
+import store from '../store/store'
 
 describe('<ToDoItem />', () => {
   beforeEach(() => {
     mount(
-      <ToDoItem
-        id={0}
-        label='Test'
-        isDone={false}
-        setToDoDone={cy.stub().as('setToDoDone')}
-        removeItem={cy.stub().as('removeItem')}
-      />
+      <Provider store={store}>
+        <ToDoItem id={0} label='Test' isDone={false} />
+      </Provider>
     )
     cy.waitForReact()
+    cy.spy(store, 'dispatch').as('check')
   })
 
   it('Render correctly', () => {
     cy.react('ToDoItem').contains('Test')
   })
 
-  it('Call setToDoDone onclick item', () => {
+  it('Calls dispatch onclick item', () => {
     cy.react('ToDoItem').contains('Test').click()
-    cy.get('@setToDoDone').should('have.been.called')
+    cy.get('@check').should('have.been.called')
   })
 
-  it('Call removeItem onclick X-button', () => {
+  it('Calls dispatch onclick X-button', () => {
     cy.react('ToDoItem').contains('X').click()
-    cy.get('@removeItem').should('have.been.called')
+    cy.get('@check').should('have.been.called')
   })
 })
