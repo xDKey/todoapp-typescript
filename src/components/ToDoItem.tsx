@@ -1,7 +1,8 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
 import styled from 'styled-components'
 import { doneItem, removeItem } from '../store/actions'
+import { todoRemoved, todoToggled } from '../store/roorReducer'
+
 
 type ToDoItemProps = {
   id: number
@@ -18,10 +19,10 @@ const ToDoItem = ({
 
   return (
     <StyledToDoItem>
-      <StyledToDoLabel isDone={isDone} onClick={() => dispatch(doneItem(id))}>
+      <StyledToDoLabel isDone={isDone} onClick={() => dispatch(todoToggled(id))}>
         {label}
       </StyledToDoLabel>
-      <StyledButton onClick={() => dispatch(removeItem(id))}>X</StyledButton>
+      <StyledButton onClick={() => dispatch(todoRemoved(id))}>X</StyledButton>
     </StyledToDoItem>
   )
 }

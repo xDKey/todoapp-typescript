@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import styled from 'styled-components'
 import { State, toDoItem } from '../type'
+import { todoAdded } from '../store/roorReducer'
 import {addItem} from '../store/actions'
 
 const InputNewToDo = () => {
@@ -19,11 +19,11 @@ const InputNewToDo = () => {
       id: Date.now(),
       label: inputValue,
       isDone: false,
-      category: categoryValue
+      category: categoryValue,
     }
 
-    dispatch(addItem(newItem))
-    
+    dispatch(todoAdded(newItem))
+
     setInputValue('')
     setCategoryValue('')
   }

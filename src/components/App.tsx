@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { State, toDoList } from 'type'
 import ToDoList from './ToDoList'
 import InputNewToDo from './InputNewToDo'
+import { setLocalTodoList } from '../store/roorReducer'
 import { useDispatch, useSelector } from 'react-redux'
 import { setLocalToDoList } from '../store/actions'
 
@@ -14,7 +15,7 @@ const App: React.FC = () => {
     const localToDoList: toDoList = JSON.parse(
       localStorage.getItem('localToDoList')
     )
-    if (localToDoList) dispatch(setLocalToDoList(localToDoList))
+    if (localToDoList) dispatch(setLocalTodoList(localToDoList))
   }, [])
 
   useEffect(() => {
