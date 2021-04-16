@@ -1,7 +1,11 @@
-import { createStore, Store } from 'redux'
-import { Action, State } from '../type'
 import rootReducer from './roorReducer'
+import { configureStore } from '@reduxjs/toolkit'
 
-const store: Store<State, Action> = createStore(rootReducer)
+const store = configureStore({
+  reducer: rootReducer,
+})
+
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch
 
 export default store
