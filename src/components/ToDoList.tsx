@@ -8,23 +8,26 @@ const ToDoList = () => {
   const { categories, toDoList } = useAppSelector((state: State) => state)
 
   const sortedByCategory = (category: string) => {
-    return toDoList
-      .filter((item) => item.category === category)
-      .map((item) => <ToDoItem key={item.id} {...item} />)
+    const filteredListByCategory = toDoList.filter(
+      (todo) => category === todo.category
+    )
+    return filteredListByCategory.length !== 0 ? filteredListByCategory : false
   }
+
+  const renderedList = categories.map((category) => {
+    const filtered = sortedByCategory(category)
+    if (filtered)
+      return (
+        <StyledCategory key={category}>
+          <h1>{category}</h1>
+          { filtered.map((todo) => <ToDoItem key={todo.id} {...todo} /> ) }
+        </StyledCategory>
+      )
+  })
 
   return (
     <>
-      {categories.map((item) => {
-        if (sortedByCategory(item).length !== 0) {
-          return (
-            <StyledCategory key={item}>
-              <h1>{item}</h1>
-              {sortedByCategory(item)}
-            </StyledCategory>
-          )
-        }
-      })}
+      {renderedList}
     </>
   )
 }
