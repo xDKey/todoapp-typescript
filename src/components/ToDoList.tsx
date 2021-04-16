@@ -1,21 +1,16 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 import { State } from 'type'
+import { useAppSelector } from '../hooks'
 import ToDoItem from './ToDoItem'
 
 const ToDoList = () => {
-  const { categories, toDoList } = useSelector((state: State) => state)
+  const { categories, toDoList } = useAppSelector((state: State) => state)
 
   const sortedByCategory = (category: string) => {
     return toDoList
       .filter((item) => item.category === category)
-      .map((item) => (
-        <ToDoItem
-          key={item.id}
-          {...item}
-        />
-      ))
+      .map((item) => <ToDoItem key={item.id} {...item} />)
   }
 
   return (

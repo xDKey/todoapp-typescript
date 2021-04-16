@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { doneItem, removeItem } from '../store/actions'
+import { useAppDispatch } from '../hooks'
 import { todoRemoved, todoToggled } from '../store/roorReducer'
 
 
@@ -15,7 +15,7 @@ const ToDoItem = ({
   label,
   isDone,
 }: ToDoItemProps) => {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
 
   return (
     <StyledToDoItem>

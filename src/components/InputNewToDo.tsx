@@ -2,14 +2,14 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { State, toDoItem } from '../type'
 import { todoAdded } from '../store/roorReducer'
-import {addItem} from '../store/actions'
+import { useAppDispatch, useAppSelector } from '../hooks'
 
 const InputNewToDo = () => {
   const [inputValue, setInputValue] = useState('')
   const [categoryValue, setCategoryValue] = useState('')
 
-  const categories = useSelector((state: State) => state.categories)
-  const dispatch = useDispatch()
+  const categories = useAppSelector((state: State) => state.categories)
+  const dispatch = useAppDispatch()
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault()

@@ -4,12 +4,11 @@ import { State, toDoList } from 'type'
 import ToDoList from './ToDoList'
 import InputNewToDo from './InputNewToDo'
 import { setLocalTodoList } from '../store/roorReducer'
-import { useDispatch, useSelector } from 'react-redux'
-import { setLocalToDoList } from '../store/actions'
+import { useAppDispatch, useAppSelector } from '../hooks'
 
 const App: React.FC = () => {
-  const toDoListState: toDoList = useSelector((state: State) => state.toDoList)
-  const dispatch = useDispatch()
+  const toDoListState: toDoList = useAppSelector((state: State) => state.toDoList)
+  const dispatch = useAppDispatch()
 
   useEffect(() => {
     const localToDoList: toDoList = JSON.parse(
