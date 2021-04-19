@@ -2,10 +2,11 @@ import React from 'react'
 import styled from 'styled-components'
 import { State } from 'type'
 import { useAppSelector } from '../hooks'
+import { CategoryType } from '../store/store'
 import ToDoItem from './ToDoItem'
 
 const ToDoList = () => {
-  const { categories, toDoList } = useAppSelector((state: State) => state)
+  const { toDoList } = useAppSelector((state: State) => state)
 
   const sortedByCategory = (category: string) => {
     const filteredListByCategory = toDoList.filter(
@@ -14,7 +15,7 @@ const ToDoList = () => {
     return filteredListByCategory.length !== 0 ? filteredListByCategory : false
   }
 
-  const renderedList = Object.keys(categories).map((category) => {
+  const renderedList = Object.keys(CategoryType).map((category) => {
     const filtered = sortedByCategory(category)
     if (filtered)
       return (

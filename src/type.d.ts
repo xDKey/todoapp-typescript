@@ -10,6 +10,5 @@ export type toDoItem = {
 export type toDoList = toDoItem[]
 
 export type State = {
-  categories: ReturnType<typeof CategoryType>
   toDoList: toDoList
 }

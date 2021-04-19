@@ -1,14 +1,14 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { State, toDoItem } from '../type'
+import { toDoItem } from '../type'
 import { todoAdded } from '../store/roorReducer'
 import { useAppDispatch, useAppSelector } from '../hooks'
+import { CategoryType } from '../store/store'
 
 const InputNewToDo = () => {
   const [inputValue, setInputValue] = useState('')
   const [categoryValue, setCategoryValue] = useState('')
 
-  const categories = useAppSelector((state: State) => state.categories)
   const dispatch = useAppDispatch()
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
@@ -28,9 +28,9 @@ const InputNewToDo = () => {
     setCategoryValue('')
   }
 
-  const renderOptions = Object.keys(categories).map((item) => (
-    <option value={item} key={item}>
-      {item}
+  const renderOptions = Object.keys(CategoryType).map((category) => (
+    <option value={category} key={category}>
+      {category}
     </option>
   ))
 

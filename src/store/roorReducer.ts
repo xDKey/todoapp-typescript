@@ -1,14 +1,7 @@
 import { State, toDoItem, toDoList } from '../type'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-export enum CategoryType {
-  Work = 'Work',
-  Family = 'Family',
-  Supplies = 'Supplies',
-}
-
 const initState: State = {
-  categories: CategoryType,
   toDoList: [
     {
       id: 1,
