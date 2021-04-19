@@ -1,4 +1,4 @@
-import { State, toDoItem, toDoList } from '../type'
+import { State, toDoItem } from '../type'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 const initState: State = {
@@ -16,7 +16,7 @@ const todosSlice = createSlice({
   name: 'todos',
   initialState: initState,
   reducers: {
-    setLocalTodoList: (state, action: PayloadAction<toDoList>) => {
+    setLocalTodoList: (state, action: PayloadAction<toDoItem[]>) => {
       const localToDoList = action.payload
       state.toDoList = localToDoList
     },
@@ -33,7 +33,7 @@ const todosSlice = createSlice({
     },
     todoRemoved: (state, action: PayloadAction<number>) => {
       const todoId = action.payload
-      const newToDoList: toDoList = state.toDoList.filter(
+      const newToDoList: toDoItem[] = state.toDoList.filter(
         (todo) => todo.id !== todoId
       )
       state.toDoList = newToDoList

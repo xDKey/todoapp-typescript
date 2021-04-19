@@ -7,8 +7,6 @@ export type toDoItem = {
   category: string
 }
 
-export type toDoList = toDoItem[]
-
 export type State = {
-  toDoList: toDoList
+  toDoList: toDoItem[]
 }

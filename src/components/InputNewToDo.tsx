@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { toDoItem } from '../type'
 import { todoAdded } from '../store/roorReducer'
-import { useAppDispatch, useAppSelector } from '../hooks'
+import { useAppDispatch } from '../hooks'
 import { CategoryType } from '../store/store'
 
 const InputNewToDo = () => {

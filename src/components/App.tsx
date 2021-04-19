@@ -1,17 +1,17 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
-import { State, toDoList } from 'type'
+import { State, toDoItem } from 'type'
 import ToDoList from './ToDoList'
 import InputNewToDo from './InputNewToDo'
 import { setLocalTodoList } from '../store/roorReducer'
 import { useAppDispatch, useAppSelector } from '../hooks'
 
 const App: React.FC = () => {
-  const toDoListState: toDoList = useAppSelector((state: State) => state.toDoList)
+  const toDoListState: toDoItem[] = useAppSelector((state: State) => state.toDoList)
   const dispatch = useAppDispatch()
 
   useEffect(() => {
-    const localToDoList: toDoList = JSON.parse(
+    const localToDoList: toDoItem[] = JSON.parse(
       localStorage.getItem('localToDoList')
     )
     if (localToDoList) dispatch(setLocalTodoList(localToDoList))
