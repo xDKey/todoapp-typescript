@@ -1,3 +1,5 @@
+import { CategoryType } from './store/roorReducer'
+
 export type toDoItem = {
   id: number
   label: string
@@ -5,9 +7,9 @@ export type toDoItem = {
   category: string
 }
 
-export type toDoList = toDo[]
+export type toDoList = toDoItem[]
 
 export type State = {
-  categories: Array<string>
+  categories: ReturnType<typeof CategoryType>
   toDoList: toDoList
 }

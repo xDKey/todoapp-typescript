@@ -28,7 +28,7 @@ const InputNewToDo = () => {
     setCategoryValue('')
   }
 
-  const renderOptions = categories.map((item) => (
+  const renderOptions = Object.keys(categories).map((item) => (
     <option value={item} key={item}>
       {item}
     </option>

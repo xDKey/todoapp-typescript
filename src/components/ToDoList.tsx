@@ -14,7 +14,7 @@ const ToDoList = () => {
     return filteredListByCategory.length !== 0 ? filteredListByCategory : false
   }
 
-  const renderedList = categories.map((category) => {
+  const renderedList = Object.keys(categories).map((category) => {
     const filtered = sortedByCategory(category)
     if (filtered)
       return (

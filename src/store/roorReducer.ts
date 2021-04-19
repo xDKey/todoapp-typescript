@@ -1,8 +1,14 @@
 import { State, toDoItem, toDoList } from '../type'
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
+export enum CategoryType {
+  Work = 'Work',
+  Family = 'Family',
+  Supplies = 'Supplies',
+}
+
 const initState: State = {
-  categories: ['Work', 'Family', 'Supplies'],
+  categories: CategoryType,
   toDoList: [
     {
       id: 1,
@@ -28,8 +34,8 @@ const todosSlice = createSlice({
     todoToggled: (state, action: PayloadAction<number>) => {
       const todoId = action.payload
 
-      state.toDoList.forEach(todo => {
-        if(todoId === todo.id) todo.isDone = !todo.isDone
+      state.toDoList.forEach((todo) => {
+        if (todoId === todo.id) todo.isDone = !todo.isDone
       })
     },
     todoRemoved: (state, action: PayloadAction<number>) => {
